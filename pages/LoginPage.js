@@ -12,5 +12,8 @@ class LoginPage{
        await this.password.fill(password)
        await this.login.click()
     }
+    async openLoginPage(){
+        await this.page.goto('/')
+    }
 }
 export {LoginPage}
