@@ -1,9 +1,11 @@
-const{test,expect}=require('@playwright/test');
+import{test,expect} from '@playwright/test';
+import { LoginPage }  from '../pages/LoginPage';      
+import { HomePage } from '../pages/HomePage';
 test("Login Success",async({page})=>{
+    const loginPage = new LoginPage(page);
+    const homepage = new HomePage(page)
     await page.goto("/");
-    await page.locator("[type='email']").fill(process.env.KOEL_EMAIL);
-    await page.locator("[type='password']").fill(process.env.KOEL_PASSWORD);
-    await page.getByRole('button',{name:'Log In'}).click();
-    await expect(page.getByTestId('btn-logout')).toBeVisible();
+    await loginPage.loginUser(process.env.KOEL_EMAIL,process.env.KOEL_PASSWORD)
+    await expect(homepage.logOut).toBeVisible();
 
 });
