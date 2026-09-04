@@ -29,8 +29,11 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL:process.env.BASE_URL,
+    locale:'en-US',
+      launchOptions: {
+        args: ['--lang=en-US']
+    },
     // baseURL: 'http://localhost:3000',
-
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
