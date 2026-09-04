@@ -1,4 +1,11 @@
 import{test,expect} from '../fixtures/fixtures.js'
+// drop to null storageState from config file to test login feature
+test.use({
+  storageState:{
+    cookies:[],
+    origins:[]
+  }
+})
 const invalidPassword = '123qwe'
 const warningMessage = "Please fill out this field."
 test("Login Success",async({loginPage,homePage})=>{

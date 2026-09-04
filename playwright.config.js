@@ -39,10 +39,18 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: [
+  projects: [{
+    name:'setup',
+    testMatch:/.*\.setup\.js/  // any name with setup.js
+
+  },
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'] ,
+        storageState:'playwright/.auth/user.json',
+      },
+      //rethrive dependency 
+      dependencies:['setup']
     },
 
     // {
