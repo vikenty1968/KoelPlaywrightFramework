@@ -2,10 +2,7 @@ class SearchPage{
     constructor (page){
 this.page=page
 this.searchHeader =page.locator('span>strong')
-this.songTitle= page.getByText('BornKing',{exact:true})
 this.notFound=page.getByTestId("song-excerpts").getByText('None found.',{exact:true})
-this.equalizer=page.getByTestId('sound-bar-play')
-this.playerSongTitle = page.getByTestId('footer-middle-pane').locator('.title')
 this.audioPlayer = page.locator('div>audio')
     }
     
@@ -22,10 +19,6 @@ this.audioPlayer = page.locator('div>audio')
      await playArea.hover()
      await playBtn.click()
     }
-    async isAudioPaused(){
-        const isPaused = await this.audioPlayer.evaluate(audio=>audio.paused)
-        return isPaused;
-    }
-    
+
 }
 export {SearchPage}
