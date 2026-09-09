@@ -6,7 +6,7 @@ this.notFound=page.getByTestId("song-excerpts").getByText('None found.',{exact:t
 this.audioPlayer = page.locator('div>audio')
     }
     
-     //search fo song card
+     //locator search fo song card
     getSongCard(songName){
         return this.page.getByTestId('song-excerpts')
             .locator('[data-test="song-card"]').filter({hasText:songName})
