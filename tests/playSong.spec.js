@@ -24,3 +24,15 @@ test("Pause and resume a song using the footer player", async ({
     await player.playBtn.click()
     await expect.poll(()=>player.isAudioPaused()).toBe(false)
 });
+test("Change volume with volume slider",async({page,homePage,searchPage,player})=>{
+    await page.goto('/')
+    await homePage.searchField.fill(testSong)
+    await searchPage.playSong(testSong)
+    await expect.poll(()=>player.isAudioPaused()).toBe(false);
+    await player.volumeControl.hover()
+    await expect(player.volumeSlider).toBeVisible()
+    await player.volumeSlider.press('Home')
+    await expect.poll(()=>player.getAudioVolume()).toBe(0)
+    await player.volumeSlider.press('End')
+    await expect.poll(()=>player.getAudioVolume()).toBe(1)
+})
