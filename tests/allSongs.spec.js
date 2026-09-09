@@ -18,9 +18,7 @@ test("Play a song from the All Songs context menu", async ({
 }) => {
   await page.goto('/');
   await sidebar.openAllSongs();
-  await allSongsPage.openSongContextMenu(testSong)
   await allSongsPage.playSongFromContextMenu(testSong);
-
   await expect(player.playerSongTitle).toHaveText(testSong);
   await expect.poll(() => player.isAudioPaused()).toBe(false);
 });
