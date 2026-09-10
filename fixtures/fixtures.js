@@ -5,6 +5,7 @@ import { SearchPage } from "../pages/SearchPage.js"
 import { Player } from "../components/Player.js"
 import { AllSongsPage } from "../pages/AllSongsPage.js"
 import {Sidebar } from "../components/Sidebar.js"
+import { PlayListPage } from "../pages/PlayListPage.js"
 
 const test =base.extend({
     loginPage:async({page},use)=>{
@@ -29,6 +30,10 @@ const test =base.extend({
      sidebar:async({page},use)=>{
       const sidebar = new Sidebar(page)
       await use(sidebar)
+     },
+     playListPage :async({page},use)=>{
+      const playListPage =new PlayListPage(page)
+      await use(playListPage)
      }
 
     
