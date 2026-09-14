@@ -16,6 +16,11 @@ class PlayListPage{
     getInfoBanner(message){
         return this.page.locator('.success').filter({hasText:message})
     }
-   
+   async removeSongFromPlayList(songName){
+    const songRow=await this.getSongRow(songName)
+    await songRow.click()
+    await this.page.keyboard.press('Delete')
+
+   }
 }
 export{PlayListPage}

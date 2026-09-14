@@ -34,8 +34,18 @@ const test =base.extend({
      playListPage :async({page},use)=>{
       const playListPage =new PlayListPage(page)
       await use(playListPage)
-     }
-
+     },
+     token: async({request},use)=>{
+      const response = await request.post('/api/me',{data:{
+    email:process.env.KOEL_EMAIL,
+    password:process.env.KOEL_PASSWORD,
+}})
+      expect(response.status()).toBe(200)
+      const body= await response.json()
+      const token =body.token;
+      expect(token).toBeTruthy
+      await use(token)
+     },
     
 
 })
